@@ -4,9 +4,9 @@
 
 - **Camada de infraestrutura**: Responsável por interagir com recursos externos, como o banco de dados, autenticação, envio de e-mails, etc. Nessa camada, também serão implementadas as migrations para gerenciar o esquema do banco de dados.
 
-**Camada de domínio**: Contém as entidades, agregados, objetos de valor e regras de negócio da aplicação. Aqui é onde a lógica central do sistema é implementada.
+- **Camada de domínio**: Contém as entidades, agregados, objetos de valor e regras de negócio da aplicação. Aqui é onde a lógica central do sistema é implementada.
 
-**Camada de aplicação**: Faz a ponte entre a camada de infraestrutura e a de domínio. Ela realiza a conversão de dados, chamadas a serviços externos, etc. Os casos de uso da aplicação são implementados como serviços nessa camada, seguindo o princípio da responsabilidade única (SOLID).
+- **Camada de aplicação**: Faz a ponte entre a camada de infraestrutura e a de domínio. Ela realiza a conversão de dados, chamadas a serviços externos, etc. Os casos de uso da aplicação são implementados como serviços nessa camada, seguindo o princípio da responsabilidade única (SOLID).
 
 ## Configurações antes de iniciar o projeto.
 - Iniciar um banco de dados PostgreSQL (Com docker ou outra ferramente que deseja)
