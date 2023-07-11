@@ -17,6 +17,8 @@ model Users {
   avatar_url String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now()) @updatedAt
+
+  @@map("users")
 }
 
 model Topics {
@@ -26,6 +28,8 @@ model Topics {
   avatar_url String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now()) @updatedAt
+
+  @@map("topics")
 }
 
 model Categories {
@@ -35,6 +39,8 @@ model Categories {
   avatar_url String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now()) @updatedAt
+
+  @@map("categories")
 }
 
 model Comments {
@@ -44,6 +50,8 @@ model Comments {
   avatar_url String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now()) @updatedAt
+
+  @@map("comments")
 }
 
 model Tags {
@@ -53,4 +61,6 @@ model Tags {
   avatar_url String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now()) @updatedAt
+
+  @@map("tags")
 }
