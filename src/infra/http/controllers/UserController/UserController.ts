@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { ServiceImageRepository } from 'domain/repositories/ServiceImageRepository';
 
-@Controller()
+@Controller('users')
 export class UserController {
   constructor(
     private readonly serviceImageRepository: ServiceImageRepository,
