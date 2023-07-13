@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
+model User {
   id         String   @id @default(uuid())
   name       String
   email      String
@@ -22,7 +22,7 @@ model Users {
   @@map("users")
 }
 
-model Topics {
+model Topic {
   id         String   @id @default(uuid())
   name       String
   email      String
@@ -33,7 +33,7 @@ model Topics {
   @@map("topics")
 }
 
-model Categories {
+model Category {
   id         String   @id @default(uuid())
   name       String
   email      String
@@ -44,7 +44,7 @@ model Categories {
   @@map("categories")
 }
 
-model Comments {
+model Comment {
   id         String   @id @default(uuid())
   name       String
   email      String
@@ -55,7 +55,7 @@ model Comments {
   @@map("comments")
 }
 
-model Tags {
+model Tag {
   id         String   @id @default(uuid())
   name       String
   email      String
