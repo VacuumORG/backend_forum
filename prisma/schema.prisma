@@ -11,46 +11,61 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
+  id         String    @id @default(uuid())
   name       String
   email      String
   password   String
-  avatar_url String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @default(now()) @updatedAt
+  avatar_url String?
+  topics     Topic[]
+  comments   Comment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 
   @@map("users")
 }
 
 model Topic {
-  id         String   @id @default(uuid())
-  name       String
-  email      String
-  avatar_url String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @default(now()) @updatedAt
+  id         String    @id @default(uuid())
+  title      String
+  content    String
+  views      Int       @default(0)
+  likes      Int       @default(0)
+  images     String[]
+  userId     String
+  categoryId String?
+  comments   Comment[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @default(now()) @updatedAt
+
+  User       User      @relation(fields: [userId], references: [id])
+  categories Category? @relation(fields: [categoryId], references: [id])
 
   @@map("topics")
 }
 
 model Category {
-  id         String   @id @default(uuid())
-  name       String
-  email      String
-  avatar_url String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @default(now()) @updatedAt
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+  Topic     Topic[]
+  Tag       Tag[]
 
   @@map("categories")
 }
 
 model Comment {
-  id         String   @id @default(uuid())
-  name       String
-  email      String
-  avatar_url String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @default(now()) @updatedAt
+  id        String   @id @default(uuid())
+  content   String
+  likes     Int      @default(0)
+  userId    String
+  topicId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+
+  Topic Topic @relation(fields: [topicId], references: [id])
+  User  User  @relation(fields: [userId], references: [id])
 
   @@map("comments")
 }
@@ -58,10 +73,11 @@ model Comment {
 model Tag {
   id         String   @id @default(uuid())
   name       String
-  email      String
-  avatar_url String
+  categoryId String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now()) @updatedAt
+
+  category Category @relation(fields: [categoryId], references: [id])
 
   @@map("tags")
 }
