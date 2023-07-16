@@ -1,6 +1,9 @@
 import {
   Body,
   Controller,
+  FileTypeValidator,
+  HttpStatus,
+  ParseFilePipe,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -27,7 +30,13 @@ export class AuthController {
   )
   async register(
     @Body() body: CreateUserDto,
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile(
+      new ParseFilePipe({
+        validators: [new FileTypeValidator({ fileType: /(jpg|jpeg|png)$/ })],
+        errorHttpStatusCode: HttpStatus.UNPROCESSABLE_ENTITY,
+      }),
+    )
+    file: Express.Multer.File,
   ) {
     const { email, name, password } = body;
 
